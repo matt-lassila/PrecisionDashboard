@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import Container from "@mui/material/Container";
-import Sidebar from "./components/Sidebar"; // MUI Drawer
-import Header from "./components/Header";   // Toggle button for Drawer
+import Box from "@mui/material/Box";
+import Sidebar from "./components/Sidebar";
+import Header from "./components/Header";
 
 // Import dashboard pages
 import OrderDashboard from "./pages/OrderDashboard";
@@ -19,7 +19,6 @@ import COAImports from "./pages/COAImports";
 import TomorrowOrderDashboard from "./pages/TomorrowOrderDashboard";
 
 export default function App() {
-  
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
@@ -27,7 +26,15 @@ export default function App() {
       <Header onDrawerToggle={() => setDrawerOpen(!drawerOpen)} />
       <Sidebar open={drawerOpen} onClose={() => setDrawerOpen(false)} />
 
-      <Container sx={{ mt: 8, ml: { sm: 30 } }}> {/* margin for sidebar */}
+      {/* Main Content Box (Full viewport minus header height) */}
+      <Box
+        sx={{
+          width: "100vw", // Full viewport width
+          height: "100vh", // Full viewport height minus header
+          overflow: "auto", // Prevents content overflow
+          p: 3, // Padding for spacing
+        }}
+      >
         <Routes>
           <Route path="/" element={<OrderDashboard />} />
           <Route path="/picking-breakdown" element={<PickingBreakdown />} />
@@ -42,7 +49,7 @@ export default function App() {
           <Route path="/coa-imports" element={<COAImports />} />
           <Route path="/tomorrow-order-dashboard" element={<TomorrowOrderDashboard />} />
         </Routes>
-      </Container>
+      </Box>
     </>
   );
 }

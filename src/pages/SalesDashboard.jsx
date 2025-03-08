@@ -1,10 +1,11 @@
 import React from "react";
-import { Container, Typography } from "@mui/material";
+import {Typography } from "@mui/material";
+import DashboardContainer from "../components/DashboardContainer";
 
 export default function SalesDashboard() {
   return (
-    <Container>
+    <DashboardContainer>
       <Typography variant="h4">Sales Dashboard</Typography>
-    </Container>
+    </DashboardContainer>
   );
 }

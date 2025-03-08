@@ -33,42 +33,6 @@ const darkTheme = createTheme({
     body1: { fontSize: "1rem" },
     body2: { fontSize: "0.875rem" },
   },
-
-  components: {
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          borderRadius: "8px",
-          textTransform: "none",
-        },
-      },
-    },
-    MuiPaper: {
-      styleOverrides: {
-        root: {
-          backgroundColor: "#1e1e1e", // Cards & menus use this color
-          borderRadius: "10px",
-          padding: "16px",
-        },
-      },
-    },
-    MuiAppBar: {
-      styleOverrides: {
-        root: {
-          backgroundColor: "#1e1e1e",
-          color: "#fff",
-        },
-      },
-    },
-    MuiDrawer: {
-      styleOverrides: {
-        paper: {
-          backgroundColor: "#1e1e1e",
-          color: "#fff",
-        }, 
-      },
-    },
-  },
 });
 
 export default darkTheme;

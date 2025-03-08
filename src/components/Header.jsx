@@ -1,56 +1,32 @@
 import React, { useState } from "react";
-import { AppBar, Toolbar, IconButton, Typography, Box } from "@mui/material";
-import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
-import { styled, useTheme } from "@mui/material/styles";
-
-const HEADER_HEIGHT = 100;
-
-// Styled AppBar (Fully transparent when not hovered)
-const StyledAppBar = styled(AppBar)(({ theme }) => ({
-  height: HEADER_HEIGHT,
-  position: "absolute",
-  top: 0,
-  left: 0,
-  right: 0,
-  transition: "background-color 0.3s ease-in-out",
-  backgroundColor: "transparent", // Default fully transparent
-}));
-
-// Sidebar Toggle Button with Transparency
-const TransparentIconButton = styled(IconButton)({
-  transition: "opacity 0.3s ease-in-out",
-  opacity: 0.2, // Mostly transparent by default
-  "&:hover": {
-    opacity: 1, // Fully visible on hover
-  },
-});
+import { IconButton } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import { useTheme } from "@mui/material/styles";
+import "./Header.css";
 
 export default function Header({ onDrawerToggle }) {
-  const theme = useTheme();
   const [hover, setHover] = useState(false);
+  const theme = useTheme(); // Use MUI theme colors
 
   return (
-    <StyledAppBar
-      sx={{
-        backgroundColor: hover ? theme.palette.background.paper : "transparent",
-        boxShadow: "none",
-      }}
+    <div
+      className={`header ${hover ? "visible" : ""}`}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
+      style={{
+        backgroundColor: "#989898",
+        height: "100px",
+      }}
     >
-      <Toolbar>
-        {/* Sidebar Toggle Button */}
-        <TransparentIconButton edge="start" color="inherit" onClick={onDrawerToggle}>
-          <AppRegistrationIcon sx={{ fontSize: 25 }} />
-        </TransparentIconButton>
+      {/* Sidebar Toggle Button (Always visible & above the header) */}
+      <IconButton className="toggle-button" onClick={onDrawerToggle}>
+        <MenuIcon />
+      </IconButton>
 
-        {/* Header Title */}
-        <Box sx={{ flexGrow: 1, textAlign: "center" }}>
-          <Typography variant="h4" sx={{ fontWeight: "bold", fontSize: theme.typography.h4.fontSize }}>
-            Dashboard
-          </Typography>
-        </Box>
-      </Toolbar>
-    </StyledAppBar>
+      {/* Full-width Header Content (Appears on hover) */}
+      <div className="header-content">
+        <span>Future Settings Area</span>
+      </div>
+    </div>
   );
 }

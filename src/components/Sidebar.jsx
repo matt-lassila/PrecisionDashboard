@@ -1,5 +1,13 @@
 import React from "react";
-import { Drawer, List, ListItem, ListItemText, Slider, Typography, Divider } from "@mui/material";
+import {
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+  Slider,
+  Typography,
+  Divider,
+} from "@mui/material";
 import { useSettings } from "../context/SettingsContext";
 import { useTheme } from "@mui/material/styles";
 
@@ -21,7 +29,9 @@ export default function Sidebar({ open, onClose }) {
       }}
     >
       <List sx={{ width: 250, padding: 2 }}>
-        <Typography variant="h6" sx={{ mb: 2 }}>Settings</Typography>
+        <Typography variant="h6" sx={{ mb: 2 }}>
+          Settings
+        </Typography>
 
         {/* Font Scale Controls */}
         <ListItem>
@@ -31,7 +41,9 @@ export default function Sidebar({ open, onClose }) {
             min={0.5}
             max={2}
             step={0.1}
-            onChange={(e, value) => setSettings({ ...settings, globalFontScale: value })}
+            onChange={(e, value) =>
+              setSettings({ ...settings, globalFontScale: value })
+            }
           />
         </ListItem>
 
@@ -42,7 +54,9 @@ export default function Sidebar({ open, onClose }) {
             min={0.5}
             max={2}
             step={0.1}
-            onChange={(e, value) => setSettings({ ...settings, headerFontScale: value })}
+            onChange={(e, value) =>
+              setSettings({ ...settings, headerFontScale: value })
+            }
           />
         </ListItem>
 
@@ -53,7 +67,48 @@ export default function Sidebar({ open, onClose }) {
             min={0.5}
             max={2}
             step={0.1}
-            onChange={(e, value) => setSettings({ ...settings, bodyFontScale: value })}
+            onChange={(e, value) =>
+              setSettings({ ...settings, bodyFontScale: value })
+            }
+          />
+        </ListItem>
+
+        <ListItem>
+          <ListItemText primary="Body Value Size" />
+          <Slider
+            value={settings.bodyValueScale}
+            min={0.5}
+            max={3}
+            step={0.1}
+            onChange={(e, value) =>
+              setSettings({ ...settings, bodyValueScale: value })
+            }
+          />
+        </ListItem>
+
+        <ListItem>
+          <ListItemText primary="Gauge Size" />
+          <Slider
+            value={settings.gaugeScale}
+            min={0.5}
+            max={5} // Increased max limit
+            step={0.1}
+            onChange={(e, value) =>
+              setSettings({ ...settings, gaugeScale: value })
+            }
+          />
+        </ListItem>
+
+        <ListItem>
+          <ListItemText primary="Gauge Value Size" />
+          <Slider
+            value={settings.gaugeValueScale}
+            min={0.5}
+            max={5} // Increased max limit
+            step={0.1}
+            onChange={(e, value) =>
+              setSettings({ ...settings, gaugeValueScale: value })
+            }
           />
         </ListItem>
 
@@ -67,7 +122,9 @@ export default function Sidebar({ open, onClose }) {
             min={0.5}
             max={2}
             step={0.1}
-            onChange={(e, value) => setSettings({ ...settings, paddingHorizontal: value })}
+            onChange={(e, value) =>
+              setSettings({ ...settings, paddingHorizontal: value })
+            }
           />
         </ListItem>
 
@@ -78,7 +135,9 @@ export default function Sidebar({ open, onClose }) {
             min={0.5}
             max={2}
             step={0.1}
-            onChange={(e, value) => setSettings({ ...settings, paddingVertical: value })}
+            onChange={(e, value) =>
+              setSettings({ ...settings, paddingVertical: value })
+            }
           />
         </ListItem>
 
@@ -91,7 +150,9 @@ export default function Sidebar({ open, onClose }) {
             min={0.5}
             max={2}
             step={0.1}
-            onChange={(e, value) => setSettings({ ...settings, marginHorizontal: value })}
+            onChange={(e, value) =>
+              setSettings({ ...settings, marginHorizontal: value })
+            }
           />
         </ListItem>
 
@@ -102,7 +163,9 @@ export default function Sidebar({ open, onClose }) {
             min={0.5}
             max={2}
             step={0.1}
-            onChange={(e, value) => setSettings({ ...settings, marginVertical: value })}
+            onChange={(e, value) =>
+              setSettings({ ...settings, marginVertical: value })
+            }
           />
         </ListItem>
       </List>

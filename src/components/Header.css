@@ -1,0 +1,41 @@
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 40px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    z-index: 10;
+  }
+  
+  .header.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .toggle-button {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    opacity: 0.2;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 20;
+    pointer-events: auto;
+  }
+  
+  .toggle-button:hover {
+    opacity: 1;
+  }
+  
+  /* Future Settings Section */
+  .header-content {
+    flex-grow: 1;
+    text-align: center;
+    color: white;
+  }
+  
